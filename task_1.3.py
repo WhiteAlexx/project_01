@@ -27,11 +27,11 @@ if num_mnth < 1 or num_mnth > 12:
 elif num_mnth == 2:
     print('В этом месяце 28 дней')
 
-elif num_mnth <= 7 and num_mnth % 2 == 1:
+elif num_mnth <= 7 and num_mnth % 2 == 1 or num_mnth >= 8 and num_mnth % 2 == 0:
     print('В этом месяце 31 день')
 
-elif num_mnth >= 8 and num_mnth % 2 == 0:
-    print('В этом месяце 31 день')
+#elif num_mnth >= 8 and num_mnth % 2 == 0:
+#    print('В этом месяце 31 день')
 
 else:
     print('В этом месяце 30 дней')
