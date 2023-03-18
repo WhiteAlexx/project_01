@@ -19,4 +19,6 @@ while letter != "стоп":
   elif count == 0:
     print("символа", letter, "нет в тексте")
   elif count != 0:
-    print("символ", letter, "встречается", count, "раз(а) на", nums, "позиции")
+    nums = ', '.join(map(str, nums))
+    print(nums)
+    print("символ '", letter, "' встречается ", count, " раз(а) на ", nums, " позиции", sep="")
