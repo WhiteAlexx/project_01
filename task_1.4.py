@@ -42,3 +42,5 @@ for t in lst_ttls:
         smcst = smcst + l['quantity'] * l['price']
         
     print(t, "-", smqnt, "шт, стоимость", smcst, "руб")
+    
+#  Ну тут без коментариев)
