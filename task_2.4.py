@@ -71,3 +71,10 @@ def remove_word_with_one_em(s):
 
 stroka = "Hi! !Hi! Hi! !Hi!! Hi! Hi!! H!i!"
 print('remove(', stroka, ') === ', remove_word_with_one_em(stroka), sep="")
+
+# Да, третий пункт, можно записать покороче
+
+def remove_word_with_one_em(s):
+    return ' '.join([w for w in s.split(' ') if w.count('!')!=1])
+
+print(remove_word_with_one_em("Hi! Hi!! Hi!"))
