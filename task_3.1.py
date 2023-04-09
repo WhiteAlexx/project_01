@@ -33,7 +33,7 @@ class MatrixForGame:
     '''Игровая матрица'''
 
     def __init__(self) -> None:
-        #Это наша базовая матрица
+
         clmns = 5
         rws = 5
 
@@ -199,4 +199,5 @@ while neo_game == "y":
         else:
             print("Введите корректный ответ")
             neo_game = input("""
-            Сыграем еще раз? (y/n): """)
+                Сыграем еще раз? (y/n): """)
+            
