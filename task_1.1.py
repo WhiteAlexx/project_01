@@ -9,7 +9,7 @@ my_favorite_songs = 'Waste a Moment, Staying\' Alive, A Sorta Fairytale, Start M
 spltd_sngs = my_favorite_songs.split(', ')
 print(spltd_sngs[0], spltd_sngs[-1], spltd_sngs[1],spltd_sngs[-2])
 
-
+# Ну этот вариант самый годный) да
 
 print('''
 
