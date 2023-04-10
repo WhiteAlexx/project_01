@@ -27,7 +27,6 @@
 
 
 import random
-from pprint import pprint
 
 class MatrixForGame:
     '''Игровая матрица'''
@@ -39,11 +38,9 @@ class MatrixForGame:
 
         slct = random.randint(0, 1)
         if slct == 0:
-            nmbr = 96
-            chng = 69
+            nmbr, chng = 96, 69
         else:
-            nmbr = 69
-            chng = 96
+            nmbr, chng = 69, 96
         
         square = clmns * rws
         pos_chng = random.randint(1, square)
@@ -51,14 +48,10 @@ class MatrixForGame:
         cl_chng = pos_chng % clmns
         if cl_chng == 0:
             cl_chng = clmns - 1
+            rw_chng = pos_chng // clmns - 1
         else:
             cl_chng -= 1
-
-        rw_chng = pos_chng // clmns
-        if rw_chng == rws or rw_chng == 1:
-            rw_chng -= 1
-        else:
-            rw_chng = rw_chng
+            rw_chng = pos_chng // clmns
 
         matrix = []
         while rws != 0:
@@ -85,11 +78,9 @@ class MatrixForGame:
     def get_content_for_matrix(self, ch_clmns, ch_rws):
         slct = random.randint(0, 1)
         if slct == 0:
-            nmbr = 96
-            chng = 69
+            nmbr, chng = 96, 69
         else:
-            nmbr = 69
-            chng = 96
+            nmbr, chng = 69, 96
 
         mtrx.get_count_rows_columns(mtrx.cntnt)
         
@@ -101,14 +92,10 @@ class MatrixForGame:
         cl_chng = pos_chng % clmns
         if cl_chng == 0:
             cl_chng = clmns - 1
+            rw_chng = pos_chng // clmns - 1
         else:
             cl_chng -= 1
-
-        rw_chng = pos_chng // clmns
-        if rw_chng == rws or rw_chng == 1:
-            rw_chng -= 1
-        else:
-            rw_chng = rw_chng
+            rw_chng = pos_chng // clmns
 
         matrix = []
         while rws != 0:
@@ -146,7 +133,10 @@ print("""
 mtrx = MatrixForGame()
 mtrx.get_count_rows_columns(mtrx.cntnt)
 print("Наша матрица из", mtrx.size[0], "строк и", mtrx.size[1], "колонок:")
-pprint(mtrx.cntnt)
+indx_r = 0
+for r in mtrx.cntnt:
+  print(' '.join(map(str, mtrx.cntnt[indx_r])))
+  indx_r += 1
 
 neo_game = "y"
 
@@ -155,40 +145,42 @@ while neo_game == "y":
     print("""
         Сыграем еще раз!
         Теперь введите числа, на которые
-        увеличится наша игровая матрица.
+        изменится наша игровая матрица.
         Перевернутое число будет в случайной ячейке.
         """)
 
-    ch_clmns = int(input("Насколько увеличится количество колонок матрицы: "))
+    ch_clmns = int(input("Насколько изменится количество колонок матрицы: "))
     while 1 == 1:
         try:
-            if ch_clmns < 0:
-                print("Нельзя уменьшить таблицу!")
-                ch_clmns = int(input("Насколько увеличится количество колонок матрицы: "))
+            if mtrx.size[1] + ch_clmns< 2:
+                print("Нельзя сделать матрицу из 1 колонки или меньше!")
+                ch_clmns = int(input("Насколько изменится количество колонок матрицы: "))
             else:
                 break
-        except ValueError:
+        except ValueError:  #почему-то не работает перехват ошибки ValueError
             print("Нужно вводить число!")
-            ch_clmns = int(input("Насколько увеличится количество колонок матрицы: "))       
+            ch_clmns = int(input("Насколько изменится количество колонок матрицы: "))       
 
-    ch_rws = int(input("Насколько увеличится количество строк матрицы: "))
+    ch_rws = int(input("Насколько изменится количество строк матрицы: "))
     while 1 == 1:
         try:
-            if ch_rws < 0:
-                print("Нельзя уменьшить таблицу!")
-                ch_rws = int(input("Насколько увеличится количество строк матрицы: "))
+            if mtrx.size[0] + ch_rws < 2:
+                print("Нельзя сделать матрицу из 1 строки или меньше!")
+                ch_rws = int(input("Насколько изменится количество строк матрицы: "))
             else:
                 break
-        except ValueError:
+        except ValueError:  #почему-то не работает перехват ошибки ValueError
             print("Нужно вводить число!")
-            ch_rws = int(input("Насколько увеличится количество строк матрицы: "))        
+            ch_rws = int(input("Насколько изменится количество строк матрицы: "))      
 
-    mtrx = MatrixForGame()
     mtrx.get_content_for_matrix(ch_clmns, ch_rws)
     mtrx.get_count_rows_columns(mtrx.cntnt)
     print("""
         Наша матрица из""", mtrx.size[0], "строк и", mtrx.size[1], "колонок:")
-    pprint(mtrx.cntnt)
+    indx_r = 0
+    for r in mtrx.cntnt:
+        print(' '.join(map(str, mtrx.cntnt[indx_r])))
+        indx_r += 1
 
     neo_game = input("""
     Сыграем еще раз? (y/n): """)
