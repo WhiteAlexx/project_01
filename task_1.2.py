@@ -93,4 +93,19 @@ print(lst_sngs, ' звучат ', datetime.time(0, sum_mnt, sum_scn % 60).strfti
 
 # Дополнительно 
 # Пункт D.
-# Переведите минуты и секунды в формат времени. Используйте модуль datetime 
+# Переведите минуты и секунды в формат времени. Используйте модуль datetime
+
+# Ну так можно да)
+# у меня было немного другое решение
+from datetime import timedelta
+from math import modf
+from random import sample
+
+
+total_time = timedelta()
+
+for song in sample(my_favorite_songs, 3):
+    s, m = modf(song[1])
+    total_time += timedelta(minutes=int(m), seconds=int(s * 100))
+
+print(f'Три песни звучат {total_time} минут')
